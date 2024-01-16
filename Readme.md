@@ -1,4 +1,5 @@
 # “Word of Wisdom” TCP-server
+Status: ![](https://github.com/kkucherenkov/faraway-challenge/workflows/main/badge.svg)
 
 ## Task description
 Design and implement "Word of Wisdom" TCP server.
