@@ -1,0 +1,11 @@
+service:
+  port: 54345
+  host: "localhost"
+  dataFile: "data/quotes.txt"
+cache:
+  port: 6379
+  host: "redis"
+pow:
+  complexity: 5
+  expiration: 2000000
+  maxIterations: 40000000

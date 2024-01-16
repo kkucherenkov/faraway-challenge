@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  service:
+    build:
+      context: .
+      dockerfile: docker/service.Dockerfile
+    environment:
+      SERVICE_HOST: "0.0.0.0"
+      SERVICE_PORT: '54345'
+    ports:
+      - '54345:54345'
+    image: kkucherenkov/faraway-challenge/service:latest
+    restart: 'no'
+
+  client:
+    build:
+      context: .
+      dockerfile: docker/client.Dockerfile
+    environment:
+      SERVICE_HOST: "service"
+      SERVICE_PORT: '54345'
+    image: kkucherenkov/faraway-challenge/client:latest
+    restart: 'no'
+    depends_on:
+      - service
