@@ -1,11 +1,9 @@
 package client
 
 import (
-	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/kkucherenkov/faraway-challenge/internal/pkg/config"
 	"github.com/kkucherenkov/faraway-challenge/internal/pkg/pow"
 	"github.com/kkucherenkov/faraway-challenge/internal/pkg/transport"
 	"github.com/stretchr/testify/assert"
@@ -19,11 +17,6 @@ import (
 func TestGetChallenge(t *testing.T) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	t.Parallel()
-
-	ctx := context.Background()
-	cfg := config.Config{Pow: config.Pow{Complexity: 2, Expiration: 30000, MaxIterations: 100000}, Service: config.Service{Port: "8080", Host: "localhost", DataFile: ""}, Cache: config.Cache{Port: "1234", Host: "localhost"}}
-	ctx = context.WithValue(ctx, "config", &cfg)
-	ctx = context.WithValue(ctx, "logger", logger)
 
 	t.Run("Get challenge write error", func(t *testing.T) {
 		mock := mockConnection{

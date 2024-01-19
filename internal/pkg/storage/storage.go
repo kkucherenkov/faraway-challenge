@@ -166,8 +166,8 @@ func processChunk(chunk []byte, linesPool *sync.Pool, stringPool *sync.Pool, s S
 
 	var wg2 sync.WaitGroup
 
-	logs := stringPool.Get().(string)
-	logs = string(chunk)
+	_ = stringPool.Get().(string)
+  logs := string(chunk)
 
 	linesPool.Put(chunk)
 

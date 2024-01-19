@@ -32,7 +32,7 @@ type Config struct {
 func Load(configFile string) (*Config, error) {
 	config := Config{}
 	var err error
-	err = readFile(configFile, &config)
+	_ = readFile(configFile, &config)
 	err = readEnv(&config)
 	return &config, err
 }
